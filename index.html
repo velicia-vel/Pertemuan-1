@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Mahasiswa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Profil Mahasiswa</h1>
+    <p>Belajar Pemrograman Antarmuka Pengguna</p>
+</header>
+
+<nav>
+    <a href="#home" class="nav-link active" data-target="home">Home</a>
+    <a href="#profile" class="nav-link" data-target="profile">Profile</a>
+    <a href="#contact" class="nav-link" data-target="contact">Contact</a>
+</nav>
+
+<section id="home" class="section-home page active">
+    <h2>Selamat Datang 👋</h2>
+    <p>
+        Halo! Saya Velicia, mahasiswa Sistem Informasi di Universitas
+        Tarumanagara. Halaman ini saya buat sebagai tugas mata kuliah
+        Pemrograman Antarmuka Pengguna, untuk menampilkan profil dan
+        portofolio singkat saya.
+    </p>
+    <p>
+        <a href="#profile" class="nav-link" data-target="profile">Lihat profil lengkap saya →</a>
+    </p>
+</section>
+
+<section id="profile" class="page">
+    <h2>Profil Saya</h2>
+    <p><strong>Nama:</strong> Velicia</p>
+    <p><strong>Program Studi:</strong> Sistem Informasi</p>
+    <p>
+        Saya adalah mahasiswa di Universitas Tarumanagara. Saat ini sedang
+        belajar membuat halaman web dalam mata kuliah Pemrograman Antarmuka
+        Pengguna.
+    </p>
+
+    <h3>Keahlian &amp; Minat</h3>
+    <ul>
+        <li>Visual Studio Code</li>
+        <li>Canva</li>
+        <li>Microsoft Office</li>
+    </ul>
+
+    <p>
+        Lihat portofolio saya di
+        <a href="https://github.com/velicia-vel/" target="_blank" rel="noopener noreferrer">Github</a>.
+    </p>
+</section>
+
+<section id="contact" class="section-contact page">
+    <h2>Hubungi Saya</h2>
+    <p>Kontak: 089514594049</p>
+    <p>Github: <a href="https://github.com/velicia-vel/" target="_blank" rel="noopener noreferrer">github.com/velicia-vel</a></p>
+</section>
+
+<footer>
+    <p>&copy; 2026 Velicia</p>
+</footer>
+
+<script>
+    // Ambil semua elemen section (yang punya class "page") dan semua link nav
+    const pages = document.querySelectorAll('.page');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function showPage(targetId) {
+        // Sembunyikan semua section
+        pages.forEach(page => page.classList.remove('active'));
+        // Tampilkan cuma section yang dipilih
+        document.getElementById(targetId).classList.add('active');
+
+        // Update tampilan nav (kasih highlight ke link yang aktif)
+        navLinks.forEach(link => link.classList.remove('active'));
+        document.querySelectorAll(`.nav-link[data-target="${targetId}"]`)
+            .forEach(link => link.classList.add('active'));
+    }
+
+    // Pasang event listener ke semua link yang punya data-target
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // biar gak scroll manual, cuma ganti tampilan
+            const target = link.getAttribute('data-target');
+            showPage(target);
+        });
+    });
+</script>
+
+</body>
+</html>
